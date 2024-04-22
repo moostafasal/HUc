@@ -1,0 +1,253 @@
+﻿/*html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+*/
+/*student-create*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    direction: rtl;
+    font-family: "El Messiri", sans-serif;
+}
+
+body {
+    background-color: #fefdfe;
+}
+.box-right {
+    cursor: pointer;
+    border: 1px solid #909090;
+    padding-top: 3px;
+    padding-bottom: 16px;
+    padding-left: 15px;
+    padding-right: 30px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: 0px;
+    transition: background-color 0.5s;
+}
+
+.box-left {
+    cursor: pointer;
+    border: 1px solid #909090;
+    padding-top: 3px;
+    padding-bottom: 16px;
+    padding-left: 20px;
+    padding-right: 15px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-right: 0px;
+    transition: background-color 0.5s;
+}
+
+    .box-right:hover, .box-left:hover {
+        background-color: #d9d8d9;
+    }
+
+.color-btn {
+    background-color: #4a9852 !important;
+}
+
+.bg-color {
+    color: white;
+    background-color: #4a9852;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    top: -30px;
+    left: 0px;
+}
+
+#personal-info, #Accommodation-info, #studying-info, #extra-info {
+    background-color: white;
+    margin: 10px 15px;
+    padding-top: 20px;
+    padding: 20px;
+    position: relative;
+    border: 1px solid #f8edf8;
+    border-radius: 5px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+    background-color: #e24c4c !important;
+    margin-top: 30px;
+    color: white;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+/*student-index*/
+
+.bg-color {
+    color: white;
+    background-color: #4a9852;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    top: -30px;
+    left: 0px;
+}
+
+#personal-info {
+    background-color: white;
+    margin: 10px 15px;
+    padding-top: 20px;
+    padding: 20px;
+    border: 1px solid #f8edf8;
+}
+/*sections*/
+.btn {
+    background-color: transparent;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+    .btn:hover {
+        background-color: rgb(223, 223, 223);
+    }
+
+ul.navbar-nav {
+    border-radius: 5px; /* جعل الحدود مستديرة */
+    padding: 10px; /* إضافة هامش داخلي للحدود */
+    box-shadow: 0 0 2px rgba(211, 162, 162, 0.397); /* إضافة ظل خفيف */
+}
+    .dep {
+      background-color: rgb(63, 81, 181);
+
+    }
+
+    .dep:hover {
+      background-color: rgb(63, 81, 181);
+
+    }
+
+    table tr td {
+      vertical-align: middle;
+    }
+
+    td button {
+      margin: 5px;
+    }
+
+    th {
+
+      align-content: center;
+    }
+
+    .btnDelete:hover {
+      background-color: #ff63471f !important;
+      border-radius: 25px;
+
+    }
+
+    .btnEdit:hover {
+      background-color: #477eff2e !important;
+      border-radius: 25px;
+
+    }
+
+    
+    .bg-color{
+    color: white;
+    background-color: #4a9852;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    top:-30px;
+    left:0px;
+}
+#personal-info{
+    background-color:white;   
+    margin:10px 15px;
+    padding-top: 20px;
+    padding: 20px;
+    border: 1px solid #f8edf8;
+}
+
+/*main*/
+#sec1 {
+    background: -webkit-linear-gradient(left, #e9c513, #85670f);
+    background: linear-gradient(to right, #85670f,#e9c513);
+    border-radius: 5px; /* إضافة تدوير للحواف */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* إضافة ظل */
+    border: 1px solid #ccc; /* إضافة حدود */
+    margin: 5px;
+}
+
+#sec2 {
+    background: -webkit-linear-gradient(left, #51ceff, #1173b4);
+    background: linear-gradient(to right,#0f5f94,#51ceff);
+    border-radius: 5px; /* إضافة تدوير للحواف */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* إضافة ظل */
+    border: 1px solid #ccc; /* إضافة حدود */
+    margin: 5px;
+}
+
+#sec3 {
+    background: -webkit-linear-gradient(left, #d270df, #96399e);
+    background: linear-gradient(to right,#96399e,#d270df);
+    border-radius: 5px; /* إضافة تدوير للحواف */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* إضافة ظل */
+    border: 1px solid #ccc; /* إضافة حدود */
+    margin: 5px;
+}
+
+#sec4 {
+    background: -webkit-linear-gradient(left, #f08282, #e01b1b);
+    background: linear-gradient(to right, #e01b1b, #f08282);
+    border-radius: 5px; /* إضافة تدوير للحواف */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* إضافة ظل */
+    border: 1px solid #ccc; /* إضافة حدود */
+    margin: 5px;
+}
+/*user-create*/
+.centered-card {
+margin-inline:auto;
+width:350px
+}
+
+.btn2 {
+    background-color: #3F51B5;
+    color: white;
+    height: 45px;
+
+}
+
+.form-control, .form-check-input {
+    border: 1px solid rgb(162, 152, 152);
+}
+/*users-index*/
+.btn-add {
+    background-color: #3F51B5;
+    color: white;
+    border-radius: 20px;
+    height: 45px;
+}

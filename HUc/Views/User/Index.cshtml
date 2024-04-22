@@ -1,0 +1,176 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<style>
+    .form-control, .form-check-input {
+    height: 45px;
+}
+</style>
+<div class="container-fluid">
+    <div class="pt-3">
+      <div id="personal-info" class="shadow">
+        <span class="bg-color">معلومات المستخدمين</span>
+        <div class="row">
+          <span>تعرض هذه الصفحة قائمة بجميع المستخدمين في النظام. يمكنك الاطلاع على معلومات كل مستخدم بما في ذلك اسم
+            المستخدم, رقم المستخدم .</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-3">
+      <div id="personal-info" class="shadow">
+        <div class="row">
+          <div class="col-md-4 m-auto">
+            <span>جدول المستخدمين</span>
+          </div>
+          <div class="col-md-4">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <label class="fa-solid fa-plus"></label>
+              اضافة مستخدم
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">اضافة مستخدم</h1>
+                    <button type="button" class="btn-close p-0 m-0" data-bs-dismiss="modal"
+                      aria-label="اضافة مستخدم"></button>
+                  </div>
+                  <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+                    <form>
+                      <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">البريد الالكتروني</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">كلمة المرور</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">اسم المستخدم</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">المسمى الوظيفي</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">الاسم الكامل</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">رقم الهاتف</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">الصلاحيات</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">العنوان</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="input-group mb-3">
+                        <label for="exampleInputText1" class="form-label">اختر صورة</label>
+                        <input type="file" class="form-control w-100" id="inputGroupFile02">
+                      </div>
+                    </form>
+                  </div>
+
+                  <div class="modal-footer" style="justify-content: space-between;">
+                    <button type="submit" form="myForm" class="btn btn-primary submit m-0 p-0 dep rounded-pill"
+                      style="width: 100px; height: 50px;">
+                      <label class="mb-0 mx-auto ms-2">اضافة</label>
+                      <i class="fa-solid fa-check"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger bg-danger p-0 rounded-pill"
+                      style="width: 100px; height: 50px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      <label class="mb-0 mx-auto ms-2">الغاء</label>
+                      <i class="fa-solid fa-xmark "></i>
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2" style="width: 200px;">
+            <input class="form-control" type="search" placeholder="بحث عام" aria-label="Search">
+          </div>
+          <div class="col-md-2">
+            <div class="dropdown">
+              <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                نوع المستخدم
+              </button>
+              <ul class="dropdown-menu">
+                <li><button class="dropdown-item d-flex align-items-end" type="button">الكل</button></li>
+                <li><button class="dropdown-item d-flex align-items-end" type="button">طلاب</button></li>
+                <li><button class="dropdown-item d-flex align-items-end" type="button">مستخدمين</button></li>
+              </ul>
+            </div>
+          </div>
+<div class="table-responsive">
+          <table class="table border-top mt-3">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">البريد الالكتروني</th>
+                <th scope="col">اسم المستخدم</th>
+                <th scope="col">الاسم الكامل</th>
+                <th scope="col">رقم الهاتف</th>
+                <th scope="col">العنوان</th>
+                <th scope="col">المسمى الوظيفي</th>
+                <th scope="col">الصورة</th>
+                <th scope="col">الصلاحيات</th>
+                <th scope="col">العمليات</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>
+                  <a href="#" class="fa-solid fa-pen-to-square" style="margin-left: 25px; color: #3F51B5;"></a>
+
+                  <a href="#" class="fa-solid fa-trash text-danger"></a>
+                </td>
+
+
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+          <nav aria-label="Page navigation example"
+            style="display: flex; align-items: center; justify-content: center;">
+            <ul class="pagination" style="direction:ltr;">
+            <li class=" page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+        </div>
+      </div>
+    </div>

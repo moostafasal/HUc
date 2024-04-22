@@ -1,0 +1,78 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<br />
+ <div id="personal-info" class="shadow">
+        <span class="bg-color"> معلومات الطلاب </span>
+        <p>تعرض هذه الصفحة قائمة بجميع الطلاب المسجلين في النظام. يمكنك الاطلاع على معلومات كل طالب بما في ذلك اسم المستخدم، رقم الهاتف، وحالة التسجيل.
+        </p>
+      </div>
+
+
+        <br>
+
+
+      <div  class="container-fluid col-12 justify-content-between" >
+        <hr>
+        <div class="d-flex justify-content-between" style="align-items: center;">
+          <div style="margin: 20px;"><h3>جدول الطلاب </h3></div>
+          <div>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 300px ;height: 50px;margin: 10px;">
+            </form>
+          </div>
+        </div>
+
+        <hr>
+        <table class="table">
+          <thead>
+            <tr >
+              <th scope="col">#</th>
+              <th scope="col">الصورة</th>
+              <th scope="col">اسم الطلاب</th>
+              <th scope="col">القسم</th>
+              <th scope="col">اسم المستخدم</th>
+              <th scope="col">الرقم السري</th>
+              <th scope="col">موظف التسجيل</th>
+              <th scope="col">العمليات</th>
+            </tr>
+          </thead>
+          <tbody style="height: 100px;">
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>mdo</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>mdo</td>
+                 <td>
+                <div class=" " role="" aria-label="Second group">
+                  <button type="button" class="btn "><img src="~/images/edit.png" alt="" style="width: 20px; height: 20px;"></button>
+                  <button type="button" class="btn "><img src="~/images/trash.png" alt="" style="width: 20px; height: 20px;"></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>mdo</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>mdo</td>
+              <td>
+                <div class=" " role="" aria-label="Second group">
+                  <button type="button" class="btn "><img src="~/images/edit.png" alt="" style="width: 20px; height: 20px;"></button>
+                  <button type="button" class="btn "><img src="~/images/trash.png" alt="" style="width: 20px; height: 20px;"></button>
+                </div>
+              </td>
+            </tr>
+
+
+          </tbody>
+        </table>
+       </div>
+    
