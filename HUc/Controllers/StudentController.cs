@@ -1,14 +1,48 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using HUc.Data;
+using HUc.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HUc.Controllers
 {
     public class StudentController : Controller
     {
-        // GET: StudentController
-        public ActionResult Index()
+        HosinOldTestingContext _context=new HosinOldTestingContext();
+        public async Task<IActionResult>  Index()
         {
-            return View();
+            
+            var users =await _context.UseresUsers.Include(d=>d.Dep).Where(u=>u.IsStaff==false).Take(20).ToListAsync();
+            var userViewModels =users.Select(u=>new StudentTableVM
+            {
+                Id=u.Id,
+                Img=  u.PersonalPhoto,
+                Name=  u.FullName,
+                User_name=u.Username,
+                Dept=u.Dep?.Name,
+                Email=u.Email,
+                Attendace_type = u.Edu,
+            }).ToList();
+
+            return View(userViewModels);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Search(string query)
+        {
+            ViewBag.SearchQuery = query;
+                var filteredContent = await _context.UseresUsers.Where(m => m.FullName.StartsWith(query)).ToListAsync();
+                var userViewModels = filteredContent.Select(u => new StudentTableVM
+                {
+                    Id = u.Id,
+                    Img = u.PersonalPhoto,
+                    Name = u.FullName,
+                    User_name = u.Username,
+                    Dept = u.Dep?.Name,
+                    Email = u.Email,
+                    Attendace_type = u.Edu,
+                }).ToList();
+                return View("Index", userViewModels);      
+           
         }
 
         // GET: StudentController/Details/5
