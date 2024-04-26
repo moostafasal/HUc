@@ -24,7 +24,7 @@ namespace HUc.Controllers
                 StudentCount = await _context.UseresUsers.CountAsync(s => s.IsStaff == false),
                 EmployeeCount = await _context.UseresUsers.CountAsync(s => s.IsStaff == true),
                 BatchCount = await _context.DepartmentsYears.CountAsync(d => d.Year != null),
-                DeptCount = await _context.DepartmentsDepartments.CountAsync(d => d.Name != null)
+                DeptCount = await _context.DepartmentsDepartments.CountAsync(d => d.Short != null)
 
             };
 
