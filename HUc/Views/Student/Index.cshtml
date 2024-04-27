@@ -1,8 +1,12 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@* @{
+    var Stds = ViewBag.Std;
+} *@
 @{
+    var pageSize = 20;
+    var currentPage = ViewBag.CurrentPage ?? 1;
+    var startIndex = (currentPage - 1) * pageSize + 1;
 }
+
 <br />
  <div id="personal-info" class="shadow">
         <span class="bg-color"> معلومات الطلاب </span>
@@ -19,9 +23,9 @@
         <div class="d-flex justify-content-between" style="align-items: center;">
           <div style="margin: 20px;"><h3>جدول الطلاب </h3></div>
           <div>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 300px ;height: 50px;margin: 10px;">
-            </form>
+             <form action="@Url.Action("Search", "Student")" method="get" role="search" class="d-flex">
+                   <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search" style="width: 300px; height: 50px; margin: 10px;" value="@ViewBag.SearchQuery">
+        </form>
           </div>
         </div>
 
@@ -34,45 +38,85 @@
               <th scope="col">اسم الطلاب</th>
               <th scope="col">القسم</th>
               <th scope="col">اسم المستخدم</th>
-              <th scope="col">الرقم السري</th>
-              <th scope="col">موظف التسجيل</th>
+              <th scope="col">البريد الالكتروني</th>
+              <th scope="col"> الحضور </th>
               <th scope="col">العمليات</th>
             </tr>
           </thead>
-          <tbody style="height: 100px;">
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>mdo</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>mdo</td>
-                 <td>
-                <div class=" " role="" aria-label="Second group">
-                  <button type="button" class="btn "><img src="~/images/edit.png" alt="" style="width: 20px; height: 20px;"></button>
-                  <button type="button" class="btn "><img src="~/images/trash.png" alt="" style="width: 20px; height: 20px;"></button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>mdo</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>mdo</td>
-              <td>
-                <div class=" " role="" aria-label="Second group">
-                  <button type="button" class="btn "><img src="~/images/edit.png" alt="" style="width: 20px; height: 20px;"></button>
-                  <button type="button" class="btn "><img src="~/images/trash.png" alt="" style="width: 20px; height: 20px;"></button>
-                </div>
-              </td>
-            </tr>
+        <tbody style="height: 100px;">
+            @{
+                for (var i = startIndex; i < startIndex + Model.Count; i++)
+                {
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        <img src="@Model[i - startIndex].Img" alt="User Image" style="width: 100px; height: 100px;" />
+                    </td>
+                    <td>@Model[i - startIndex].Name</td>
+                    <td>@Model[i - startIndex].Dept</td>
+                    <td>@Model[i - startIndex].User_name</td>
+                    <td>@Model[i - startIndex].Email</td>
+                    <td>@Model[i - startIndex].Attendace_type</td>
+                    <td>
+                        <div class="" role="" aria-label="Second group">
+                            <button type="button" class="btn "><img src="~/images/edit.png" alt="" style="width: 20px; height: 20px;"></button>
+                            <button type="button" class="btn "><img src="~/images/trash.png" alt="" style="width: 20px; height: 20px;"></button>
+                        </div>
+                    </td>
+                </tr>
+                }
+            }
 
-
-          </tbody>
+        </tbody>
         </table>
+
+
+
+     <nav aria-label="Page navigation example" style="display: flex; align-items: center; justify-content: center;">
+    <ul class="pagination" style="direction: ltr;">
+       <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+    <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1, query = ViewBag.SearchQuery })" aria-label="Previous">&laquo;</a>
+</li>
+
+            @if (ViewBag.TotalPages > 10)
+            {
+                var startPage = Math.Max(1, ViewBag.CurrentPage - 4);
+                var endPage = Math.Min(ViewBag.TotalPages, ViewBag.CurrentPage + 5);
+
+                if (ViewBag.CurrentPage < 6)
+                {
+                    endPage = 10;
+                }
+                else if (ViewBag.CurrentPage > ViewBag.TotalPages - 5)
+                {
+                    startPage = ViewBag.TotalPages - 9;
+                }
+
+                for (int i = startPage; i <= endPage; i++)
+                {
+                <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i, query = ViewBag.SearchQuery })">@i</a>
+                </li>
+                }
+            }
+            else
+            {
+                for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i, query = ViewBag.SearchQuery })">@i</a>
+                </li>
+                }
+            }
+
+       <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+    <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1, query = ViewBag.SearchQuery })" aria-label="Next">&raquo;</a>
+</li>
+    </ul>
+</nav>
+
+
+
+
        </div>
     

@@ -1,14 +1,62 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using HUc.Data;
+using HUc.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HUc.Controllers
 {
     public class StudentController : Controller
     {
-        // GET: StudentController
-        public ActionResult Index()
+        HosinOldTestingContext _context=new HosinOldTestingContext();
+        public async Task<IActionResult> Index(int? page, string query)
         {
-            return View();
+            ViewBag.SearchQuery = query;
+
+            var queryableData = _context.UseresUsers.Include(u => u.Dep).Where(u => u.IsStaff == false);
+
+            if (!string.IsNullOrEmpty(query))
+            {
+                queryableData = queryableData.Where(u =>
+                    u.FullName.Contains(query) ||
+                    u.Username.Contains(query) ||
+                    u.Email.Contains(query) ||
+                    u.Dep.Name.Contains(query));
+            }
+
+            var pageSize = 20;
+            var totalStudents = await queryableData.CountAsync();
+            var totalPages = (int)Math.Ceiling((double)totalStudents / pageSize);
+
+            page = Math.Max(page ?? 1, 1);
+            page = Math.Min(page ?? 1, totalPages);
+
+            ViewBag.CurrentPage = page;
+
+            var students = await queryableData
+                .Skip(((int)page - 1) * pageSize)
+                .Take(pageSize)
+                .Select(u => new StudentTableVM
+                {
+                    Id = u.Id,
+                    Img = u.PersonalPhoto,
+                    Name = u.FullName,
+                    User_name = u.Username,
+                    Dept = u.Dep != null ? u.Dep.Name : null,
+                    Email = u.Email,
+                    Attendace_type = u.Edu
+                })
+                .ToListAsync();
+
+            ViewBag.TotalPages = totalPages;
+
+            return View(students);
+        }
+
+        //[HttpGet]
+        public async Task<IActionResult> Search(int? page, string query)
+        {
+            return RedirectToAction("Index", new { page = page ?? 1, query = query });
         }
 
         // GET: StudentController/Details/5
