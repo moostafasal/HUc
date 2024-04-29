@@ -1,14 +1,20 @@
+<<<<<<< HEAD
 ﻿using HUc.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+=======
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+>>>>>>> origin/master
 
 namespace HUc.Controllers
 {
     public class UserController : Controller
     {
+<<<<<<< HEAD
         HosinOldTestingContext context = new HosinOldTestingContext();
         // GET: UserController
         public ActionResult Index(int? page)
@@ -304,6 +310,12 @@ namespace HUc.Controllers
             }
             //data = context.UseresUsers.Where(x => x.MinistrySigned == category).ToList();
             return data;
+=======
+        // GET: UserController
+        public ActionResult Index()
+        {
+            return View();
+>>>>>>> origin/master
         }
 
         // GET: UserController/Details/5
@@ -311,6 +323,7 @@ namespace HUc.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
         [HttpPost]
         // GET: UserController/Create
         public ActionResult Create(string email, string password, string username, string jobTitle, string fullName, string phoneNumber, string permissions, string address)
@@ -337,6 +350,29 @@ namespace HUc.Controllers
         }
 
 
+=======
+
+        // GET: UserController/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: UserController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+>>>>>>> origin/master
 
         // GET: UserController/Edit/5
         public ActionResult Edit(int id)

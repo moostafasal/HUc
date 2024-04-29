@@ -1,8 +1,11 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+<<<<<<< HEAD
 @model IEnumerable<HUc.Data.UseresUser>
 
+=======
+>>>>>>> origin/master
 <style>
     .form-control, .form-check-input {
     height: 45px;
@@ -42,6 +45,7 @@
                     <button type="button" class="btn-close p-0 m-0" data-bs-dismiss="modal"
                       aria-label="اضافة مستخدم"></button>
                   </div>
+<<<<<<< HEAD
                     @using (Html.BeginForm("Create", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
                                 {
                                     <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
@@ -106,11 +110,67 @@
                                         </button>
                                     </div>
                                 }
+=======
+                  <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+                    <form>
+                      <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">البريد الالكتروني</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">كلمة المرور</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">اسم المستخدم</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">المسمى الوظيفي</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">الاسم الكامل</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">رقم الهاتف</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">الصلاحيات</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">العنوان</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="input-group mb-3">
+                        <label for="exampleInputText1" class="form-label">اختر صورة</label>
+                        <input type="file" class="form-control w-100" id="inputGroupFile02">
+                      </div>
+                    </form>
+                  </div>
+
+                  <div class="modal-footer" style="justify-content: space-between;">
+                    <button type="submit" form="myForm" class="btn btn-primary submit m-0 p-0 dep rounded-pill"
+                      style="width: 100px; height: 50px;">
+                      <label class="mb-0 mx-auto ms-2">اضافة</label>
+                      <i class="fa-solid fa-check"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger bg-danger p-0 rounded-pill"
+                      style="width: 100px; height: 50px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      <label class="mb-0 mx-auto ms-2">الغاء</label>
+                      <i class="fa-solid fa-xmark "></i>
+                    </button>
+                  </div>
+>>>>>>> origin/master
 
                 </div>
               </div>
             </div>
           </div>
+<<<<<<< HEAD
                 <div class="col-md-2" style="width: 200px;">
                     <form action="@Url.Action("Search", "User")" method="get">
                         <input type="search" name="query" class="form-control" placeholder="بحث عام" aria-label="Search" onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }" value="@ViewBag.SearchQuery">
@@ -332,6 +392,24 @@
                     </div>
 
 
+=======
+          <div class="col-md-2" style="width: 200px;">
+            <input class="form-control" type="search" placeholder="بحث عام" aria-label="Search">
+          </div>
+          <div class="col-md-2">
+            <div class="dropdown">
+              <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                نوع المستخدم
+              </button>
+              <ul class="dropdown-menu">
+                <li><button class="dropdown-item d-flex align-items-end" type="button">الكل</button></li>
+                <li><button class="dropdown-item d-flex align-items-end" type="button">طلاب</button></li>
+                <li><button class="dropdown-item d-flex align-items-end" type="button">مستخدمين</button></li>
+              </ul>
+            </div>
+          </div>
+>>>>>>> origin/master
 <div class="table-responsive">
           <table class="table border-top mt-3">
             <thead>
@@ -351,6 +429,7 @@
             </thead>
             <tbody>
               <tr>
+<<<<<<< HEAD
                                 @foreach (var item in Model)
                                 {
                                 <tr>
@@ -373,11 +452,30 @@
                                     </td>
                                 </tr>
                                 }
+=======
+                <th scope="row">1</th>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>
+                  <a href="#" class="fa-solid fa-pen-to-square" style="margin-left: 25px; color: #3F51B5;"></a>
+
+                  <a href="#" class="fa-solid fa-trash text-danger"></a>
+                </td>
+
+
+>>>>>>> origin/master
               </tr>
 
             </tbody>
           </table>
         </div>
+<<<<<<< HEAD
           <nav aria-label="Page navigation example" style="display: flex; align-items: center; justify-content: center;">
     <ul class="pagination" style="direction: ltr;">
         <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
@@ -400,6 +498,24 @@
         </li>
     </ul>
 </nav>
+=======
+          <nav aria-label="Page navigation example"
+            style="display: flex; align-items: center; justify-content: center;">
+            <ul class="pagination" style="direction:ltr;">
+            <li class=" page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+>>>>>>> origin/master
 
         </div>
       </div>

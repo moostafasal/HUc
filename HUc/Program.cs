@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+using Microsoft.EntityFrameworkCore;
+
+>>>>>>> origin/master
 namespace HUc
 {
     public class Program
@@ -9,6 +14,12 @@ namespace HUc
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+<<<<<<< HEAD
+=======
+            builder.Services.AddDbContext<HosinOldTestingContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+>>>>>>> origin/master
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
