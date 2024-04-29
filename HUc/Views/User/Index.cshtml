@@ -1,0 +1,406 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<HUc.Data.UseresUser>
+
+<style>
+    .form-control, .form-check-input {
+    height: 45px;
+}
+</style>
+<div class="container-fluid">
+    <div class="pt-3">
+      <div id="personal-info" class="shadow">
+        <span class="bg-color">معلومات المستخدمين</span>
+        <div class="row">
+          <span>تعرض هذه الصفحة قائمة بجميع المستخدمين في النظام. يمكنك الاطلاع على معلومات كل مستخدم بما في ذلك اسم
+            المستخدم, رقم المستخدم .</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-3">
+      <div id="personal-info" class="shadow">
+        <div class="row">
+          <div class="col-md-4 m-auto">
+            <span>جدول المستخدمين</span>
+          </div>
+          <div class="col-md-4">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <label class="fa-solid fa-plus"></label>
+              اضافة مستخدم
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">اضافة مستخدم</h1>
+                    <button type="button" class="btn-close p-0 m-0" data-bs-dismiss="modal"
+                      aria-label="اضافة مستخدم"></button>
+                  </div>
+                    @using (Html.BeginForm("Create", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">البريد الالكتروني</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" name="Email" aria-describedby="emailHelp">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">كلمة المرور</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1" name="Password">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputText1" class="form-label">اسم المستخدم</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" name="Username">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputText1" class="form-label">المسمى الوظيفي</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" name="Role">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputText1" class="form-label">الاسم الكامل</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" name="EnFullName">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputText1" class="form-label">رقم الهاتف</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" name="PhoneNumber">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputText1" class="form-label">الصلاحيات</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" name="Email">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputText1" class="form-label">العنوان</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" name="Adress">
+                                        </div>
+
+                                        
+
+                                            @*<div class="input-group mb-3">
+                                            <label for="exampleInputText1" class="form-label">اختر صورة</label>
+                                            <input type="file" class="form-control w-100" id="inputGroupFile02" name="ProfileImage">
+                                            </div> *@
+                                        <div class="col-sm-12 col-md-12 col-lg-12  mt-2">
+
+                                            <label for="file-upload" class="custom-file-upload">
+                                                اختر الصورة <i class="fa-solid fa-download text-white"></i>
+                                            </label>
+                                            <input id="file-upload" type="file" />
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer" style="justify-content: space-between;">
+                                        <button type="submit" class="btn btn-primary submit m-0 p-0 dep rounded-pill" style="width: 100px; height: 50px;">
+                                            <label class="mb-0 mx-auto ms-2">اضافة</label>
+                                            <i class="fa-solid fa-check"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger bg-danger p-0 rounded-pill" style="width: 100px; height: 50px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <label class="mb-0 mx-auto ms-2">الغاء</label>
+                                            <i class="fa-solid fa-xmark "></i>
+                                        </button>
+                                    </div>
+                                }
+
+                </div>
+              </div>
+            </div>
+          </div>
+                <div class="col-md-2" style="width: 200px;">
+                    <form action="@Url.Action("Search", "User")" method="get">
+                        <input type="search" name="query" class="form-control" placeholder="بحث عام" aria-label="Search" onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }" value="@ViewBag.SearchQuery">
+                    </form>
+                </div>
+                <div class="col-md-2" >
+                    <div class="dropdown" style="width :100% ;border: 1px solid rgba(189, 189, 189, 0.884); border-radius: 5px;">
+                        <button style="width :100%" class="btn btn-light " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @if (string.IsNullOrEmpty(ViewBag.cat as string))
+                            {
+                                @* <div>كل المستخدمين</div> *@
+                                <div class="d-flex align-items-center">كل المستخدمين &nbsp&nbsp<span class="ml-1">&#9662;</span> </div>
+                            }
+                            else
+                            {
+
+                                <div class="d-flex align-items-center">@ViewBag.cat <span class="ml-1">&#9662;</span></div>
+                            }
+                        </button>
+                        <ul class="dropdown-menu" >
+                            <li style="width :100%" class="@((ViewBag.cat as string) == "الكل" ? "active" : "")">
+                                <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("Category", "User", new { category = "الكل" })'">الكل</button>
+                            </li>
+                            <li style="width :100%" class="@((ViewBag.cat as string) == "طلاب" ? "active" : "")">
+                                <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("Category", "User", new { category = "طلاب" })'">طلاب</button>
+                            </li>
+                            <li style="width :100%" class="@((ViewBag.cat as string) == "موظفين" ? "active" : "")">
+                                <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("Category", "User", new { category = "موظفين" })'">موظفين</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                @* fitration *@
+                <div class="row" style="margin-top : 30px">
+                    <div class="col-2">
+                        <div class="dropdown" style="width :100% ;border: 1px solid rgba(189, 189, 189, 0.884); border-radius: 5px;">
+                            <button style="width :100%" class="btn btn-light " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @if (string.IsNullOrEmpty(ViewBag.sex as string))
+                                {
+                                    <div class="d-flex align-items-center"> الجنس  &nbsp&nbsp<span class="ml-1">&#9662;</span> </div>
+                                }
+                                else
+                                {
+                                    <div class="d-flex align-items-center">@ViewBag.sex <span class="ml-1">&#9662;</span></div>
+                                }
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li style="width :100%" class="@((ViewBag.sex as string) == "الكل" ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategorySex", "User", new { category = "الكل" })'">الكل</button>
+                                </li>
+                                <li style="width :100%" class="@((ViewBag.sex as string) == "ذكر" ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategorySex", "User", new { category = "ذكر" })'">ذكر</button>
+                                </li>
+                                <li style="width :100%" class="@((ViewBag.sex as string) == "انثى" ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategorySex", "User", new { category = "انثى" })'">انثى</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="dropdown" style="width :100% ;border: 1px solid rgba(189, 189, 189, 0.884); border-radius: 5px;">
+                            <button style="width :100%" class="btn btn-light " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                @{
+                                    bool? nullableBoolValue = ViewBag.Active as bool?;
+
+                                    if (nullableBoolValue.HasValue)
+                                    {
+                                        @if (@ViewBag.Active)
+                                        {
+                                            <div class="d-flex align-items-center"> Active  &nbsp&nbsp<span class="ml-1">&#9662;</span> </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="d-flex align-items-center">Un-Active <span class="ml-1">&#9662;</span></div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="d-flex align-items-center"> All Activation  &nbsp&nbsp<span class="ml-1">&#9662;</span> </div>
+                                    }
+   
+                                }
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li style="width :100%" class="@((ViewBag.Active as bool?).HasValue ? "" : "active")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategoryActive", "User")'">الكل</button>
+                                </li>
+                                <li style="width :100%" class="@((ViewBag.Active) == true ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategoryActive", "User", new { category = true })'">Active</button>
+                                </li>
+                                <li style="width :100%" class="@((ViewBag.Active ) == false ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategoryActive", "User", new { category = false })'">Un-Active</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="dropdown" style="width :100% ;border: 1px solid rgba(189, 189, 189, 0.884); border-radius: 5px;">
+                            <button style="width :100%" class="btn btn-light " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @if (string.IsNullOrEmpty(ViewBag.edu as string))
+                                {
+                                    <div class="d-flex align-items-center"> الفتره &nbsp&nbsp<span class="ml-1">&#9662;</span> </div>
+                                }
+                                else
+                                {
+
+                                    <div class="d-flex align-items-center">@ViewBag.edu <span class="ml-1">&#9662;</span></div>
+                                }
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li style="width :100%" class="@((ViewBag.edu as string) == "الكل" ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("Categoryedu", "User", new { category = "الكل" })'">الكل</button>
+                                </li>
+                                <li style="width :100%" class="@((ViewBag.edu as string) == "صباحي" ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("Categoryedu", "User", new { category = "صباحي" })'">صباحي</button>
+                                </li>
+                                <li style="width :100%" class="@((ViewBag.edu as string) == "مسائي" ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("Categoryedu", "User", new { category = "مسائي" })'">مسائي</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="dropdown" style="width :100% ;border: 1px solid rgba(189, 189, 189, 0.884); border-radius: 5px;">
+                            <button style="width :100%" class="btn btn-light " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @if (string.IsNullOrEmpty(ViewBag.Dorea as string))
+                                {
+                                    <div class="d-flex align-items-center"> دور  &nbsp&nbsp<span class="ml-1">&#9662;</span> </div>
+                                }
+                                else
+                                {
+
+                                    <div class="d-flex align-items-center">@ViewBag.Dorea <span class="ml-1">&#9662;</span></div>
+                                }
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li style="width :100%" class="@((ViewBag.Dorea as string) == "الكل" ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategoryDorea", "User", new { category = "الكل" })'">الكل</button>
+                                </li>
+                                <li style="width :100%" class="@((ViewBag.Dorea as string) == "الاول" ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategoryDorea", "User", new { category = "الاول" })'">الاول</button>
+                                </li>
+                                <li style="width :100%" class="@((ViewBag.Dorea as string) == "الثاني" ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategoryDorea", "User", new { category = "الثاني" })'">الثاني</button>
+                                </li>
+                                <li style="width :100%" class="@((ViewBag.Dorea as string) == "الثالث" ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategoryDorea", "User", new { category = "الثالث" })'">الثالث</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="dropdown" style="width :100% ;border: 1px solid rgba(189, 189, 189, 0.884); border-radius: 5px;">
+                            <button style="width :100%" class="btn btn-light " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @if (string.IsNullOrEmpty(ViewBag.MainStatus as string))
+                                {
+                                    @* <div>كل المستخدمين</div> *@
+                                    <div class="d-flex align-items-center"> الحاله الاساسيه &nbsp&nbsp<span class="ml-1">&#9662;</span> </div>
+                                }
+                                else
+                                {
+
+                                    <div class="d-flex align-items-center">@ViewBag.MainStatus <span class="ml-1">&#9662;</span></div>
+                                }
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li style="width :100%" class="@((ViewBag.MainStatus as string) == "الكل" ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategoryMainStatus", "User", new { category = "الكل" })'">الكل</button>
+                                </li>
+                                <li style="width :100%" class="@((ViewBag.MainStatus as string) == "خريج" ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategoryMainStatus", "User", new { category = "خريج" })'">خريج</button>
+                                </li>
+                                <li style="width :100%" class="@((ViewBag.MainStatus as string) == "مستمر" ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategoryMainStatus", "User", new { category = "مستمر" })'">مستمر</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="dropdown" style="width :100% ;border: 1px solid rgba(189, 189, 189, 0.884); border-radius: 5px;">
+                            <button style="width :100%" class="btn btn-light " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                @{
+                                    bool? nullableBool = ViewBag.MinistrySigned as bool?;
+
+                                    if (nullableBool.HasValue)
+                                    {
+                                        @if (@ViewBag.MinistrySigned)
+                                        {
+                                            <div class="d-flex align-items-center"> مسجل بالوزاره  &nbsp&nbsp<span class="ml-1">&#9662;</span> </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="d-flex align-items-center">غير مسجل بالوزاره  <span class="ml-1">&#9662;</span></div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="d-flex align-items-center"> التسجيل بالوزاره الكل  &nbsp&nbsp<span class="ml-1">&#9662;</span> </div>
+                                    }
+
+                                }
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li style="width :100%" class="@((ViewBag.MinistrySigned as bool?).HasValue ? "" : "active")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategoryMinistrySigned", "User")'">الكل</button>
+                                </li>
+                                <li style="width :100%" class="@((ViewBag.MinistrySigned) == true ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategoryMinistrySigned", "User", new { category = true })'">مسجل بالوزاره</button>
+                                </li>
+                                <li style="width :100%" class="@((ViewBag.MinistrySigned ) == false ? "active" : "")">
+                                    <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("CategoryMinistrySigned", "User", new { category = false })'"> غير مسجل بالوزاره</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+<div class="table-responsive">
+          <table class="table border-top mt-3">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">البريد الالكتروني</th>
+                <th scope="col">اسم المستخدم</th>
+                <th scope="col">الاسم الكامل</th>
+                <th scope="col">رقم الهاتف</th>
+                <th scope="col">العنوان</th>
+                <th scope="col">المسمى الوظيفي</th>
+                <th scope="col">الصورة</th>
+                <th scope="col">الصلاحيات</th>
+                <th scope="col">العمليات</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Username</td>
+                                    <td>@item.FullName</td>
+                                    <td>@item.PhoneNumber</td>
+                                    <td>@item.Adress</td>
+                                    <td>@item.Role</td>
+                                    <td><img src="@item.PersonalPhoto" style="width: 30px; height: 30px;" alt="@item.PersonalPhoto"></td>
+                                    <td></td>
+                                    <td>
+                                        <div class="d-flex justify-content-between">
+                                            <a href="#" class="fa-solid fa-pen-to-square" style="margin-left: 25px; color: #3F51B5;"></a>
+
+                                            <a href="#" class="fa-solid fa-trash text-danger"></a>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                }
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+          <nav aria-label="Page navigation example" style="display: flex; align-items: center; justify-content: center;">
+    <ul class="pagination" style="direction: ltr;">
+        <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", new { page = 1 })" aria-label="First">First</a>
+        </li>
+        <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1 })" aria-label="Previous">&laquo;</a>
+        </li>
+                        @for (int i = 1; i <= 10 && i <= ViewBag.TotalPages; i++)
+                        {
+                <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                </li>
+                        }
+        <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })" aria-label="Next">&raquo;</a>
+        </li>
+        <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.TotalPages })" aria-label="Last">Last</a>
+        </li>
+    </ul>
+</nav>
+
+        </div>
+      </div>
+    </div>

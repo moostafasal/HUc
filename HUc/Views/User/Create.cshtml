@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "/Views/Shared/__LoginLayout.cshtml";
+}
+
+<!-- Your content for the Create page goes here -->
+
+<style>
+    *{
+        direction :rtl !important ;
+        
+    }
+
+    .centered-card{
+        margin-top :20px;
+    }
+</style >
+<div class="row my-5">
+        <div class="centered-card">
+            <div class="card">
+                <img src="~/images/Logo.png" class="card-img-top mx-auto  mt-2 mb-2" alt="جامعة الهادي" style="width:155px ">
+                <h3 class="card-title" style="font-size: 25px; text-align: center;">اهــــلا بعودتـــك</h3>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">البريد الالكتروني</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">الرمز السري</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-check-label" for="exampleCheck1">تذكرني</label>
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        </div>
+                    <button type="submit" class="btn btn-primary w-100 text-center" style="border: 1px solid rgb(26, 46, 235);">
+                        تسجيل الدخول
+                    </button>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
